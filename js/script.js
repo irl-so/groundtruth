@@ -10,11 +10,16 @@ function popUp(f,l){
     '<a href=/img/'+f.properties.image+'.jpg><img src="/img/'+f.properties.image+'.jpg" width="250"style="padding:1px; margin:1px;"></a>';
     l.bindPopup(popUpcontent);
     };
+function altPop(f,l){
+	 var popUp = 
+    '<p>'+ f.properties.Time + '</p>';
+    l.bindPopup(popUp);
+};
 
 //wheee here's phone data
 var alt_phone = 
-	new L.geoJson(alt_phone,{ 
-		pointToLayer: function (feature, latlng) {
+	new L.geoJson(alt_phone,
+		{onEachFeature: altPop, pointToLayer: function (feature, latlng) {
 		return L.circleMarker(latlng, {
 				radius: 7,
 				fillColor: "#729349",
